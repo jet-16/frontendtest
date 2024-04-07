@@ -85,7 +85,7 @@ function YourSchedule({ month, year, onSelectItem}: Props) {
             let diff = (secondDate.getTime() - firstDate.getTime()) / 1000 / 60
             const hours = Math.abs(Math.trunc(diff/60))
             const minutes = Math.abs(Math.trunc(diff%60))
-            console.log(firstDate, secondDate)
+
             return firstDate < secondDate ? "Schedule Ended" : (<>in <b>{hours}</b>hours <b>{minutes}</b>minutes</>)
         }
 
