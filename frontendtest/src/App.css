@@ -7,6 +7,17 @@ body {
   align-items: center;
 }
 
+.toast {
+  z-index: 10000;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.toast-body {
+  background-color: red;
+  color: white;
+}
+
 .title {
   display: flex;
   justify-content: center;

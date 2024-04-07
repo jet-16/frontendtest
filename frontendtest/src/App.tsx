@@ -3,7 +3,7 @@ import './App.css'
 import ActivityProgress from './components/ActivityProgress'
 import YourSchedule from './components/YourSchedule'
 import { sleepSchedules } from './components/YourSchedule'
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Toast } from 'react-bootstrap';
 
 //SVG
 import doubledot from './assets/Group 9975.svg'
@@ -21,12 +21,15 @@ function App() {
   const [show, setShow] = useState(false)
   const [showBed, setShowBed] = useState(false)
   const [showDuration, setShowDuration] = useState(false)
+  const [showError, setError] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const handleCloseBed = () => setShowBed(false)
   const handleShowBed = () => setShowBed(true)
   const handleCloseDuration = () => setShowDuration(false)
   const handleShowDuration = () => setShowDuration(true)
+  const handleError = () => setError(!showError)
+
   const [getItem, setItem] = useState(0)
   const [getTime, setTime] = useState("23:59")
   const [getHours, setHours] = useState("0")
@@ -34,10 +37,10 @@ function App() {
   const [getBedAlert, setBedAlert] = useState(true)
   const [getWakeAlert, setWakeAlert] = useState(true)
   const [state, setState] = useState(true)
-
-  const date = new Date()
-  const month = date.getMonth()
-  const year = date.getFullYear()
+  
+  const today = new Date()
+  const month = today.getMonth()
+  const year = today.getFullYear()
 
   const handleChangeTime = (e: ChangeEvent<HTMLInputElement>) => {
     setTime(e.target.value);
@@ -79,7 +82,7 @@ function App() {
 
       if (found) {
         setState(true)
-      } else if (selected.getDate() < date.getDate()) {
+      } else if (selected.getDate() < today.getDate()) {
         setState(true)
       } else {
         setState(false)
@@ -96,7 +99,11 @@ function App() {
 
 
   const handleAddSchedule = () => {
-      const date = (year+"-"+(month+1).toString().padStart(2,'0')+"-"+getItem.toString().padStart(2,'0')).toString()
+      const date = (
+                      year + "-" + 
+                      (month+1).toString().padStart(2,'0') + "-" + 
+                      getItem.toString().padStart(2,'0')).toString() + " " + 
+                      getTime + ":00"
       const bedtimeString = (date + " " + getTime + ":00").toString()
 
       const calculateWakeTime = addTimeToDate(bedtimeString,getMinutes, getHours)
@@ -105,25 +112,43 @@ function App() {
                             calculateWakeTime.getDate().toString().padStart(2,'0') + " " +
                             calculateWakeTime.toTimeString().slice(0,8)
       
-      const data = {
-        date: date,
-        date_bedtime: bedtimeString,
-        alert_on_bedtime: getBedAlert,
-        date_wake: resultWakeTime,
-        alert_on_wake: getWakeAlert
-      }
+      let validate1 = false
+      let validate2 = false
 
-      sleepSchedules.push(data)
-      setTime("12:00")
-      setHours("0")
-      setMinutes("0")
-      setBedAlert(true)
-      setWakeAlert(true)
-      handleClose()
+      const selected = new Date(date)
+
+      Number(getMinutes) > 59 ? validate1 = false : validate1 = true;
+      selected.getDate() === today.getDate() && selected.getTime() < today.getTime() ? validate2 = false : validate2 = true
+
+      if (validate1 && validate2) {
+          const data = {
+            date: date,
+            date_bedtime: bedtimeString,
+            alert_on_bedtime: getBedAlert,
+            date_wake: resultWakeTime,
+            alert_on_wake: getWakeAlert
+          }
+
+        sleepSchedules.push(data)
+        setTime("12:00")
+        setHours("0")
+        setMinutes("0")
+        setBedAlert(true)
+        setWakeAlert(true)
+        handleClose()
+      } else { 
+        handleError()
+      }
+      
   }
 
   return (
     <>
+      <Toast show={showError} onClose={handleError} autohide={true}>
+        <Toast.Body>
+            Invalid Input
+        </Toast.Body>
+      </Toast>
       <div className="title">
         <div className="title-home">
           <h1 >Sleep Schedule</h1>
