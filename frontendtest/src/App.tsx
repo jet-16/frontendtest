@@ -102,11 +102,10 @@ function App() {
       const date = (
                       year + "-" + 
                       (month+1).toString().padStart(2,'0') + "-" + 
-                      getItem.toString().padStart(2,'0')).toString() + " " + 
-                      getTime + ":00"
+                      getItem.toString().padStart(2,'0')).toString() 
       const bedtimeString = (date + " " + getTime + ":00").toString()
 
-      const calculateWakeTime = addTimeToDate(bedtimeString,getMinutes, getHours)
+      const calculateWakeTime = addTimeToDate(bedtimeString, getMinutes, getHours)
       const resultWakeTime = calculateWakeTime.getFullYear() + "-" + 
                             (calculateWakeTime.getMonth()+1).toString().padStart(2,'0') + "-" +
                             calculateWakeTime.getDate().toString().padStart(2,'0') + " " +
@@ -115,7 +114,8 @@ function App() {
       let validate1 = false
       let validate2 = false
 
-      const selected = new Date(date)
+      const dateWithTime = date + getTime + ":00"
+      const selected = new Date(dateWithTime)
 
       Number(getMinutes) > 59 ? validate1 = false : validate1 = true;
       selected.getDate() === today.getDate() && selected.getTime() < today.getTime() ? validate2 = false : validate2 = true
@@ -130,7 +130,7 @@ function App() {
           }
 
         sleepSchedules.push(data)
-        setTime("12:00")
+        setTime("11:59")
         setHours("0")
         setMinutes("0")
         setBedAlert(true)
