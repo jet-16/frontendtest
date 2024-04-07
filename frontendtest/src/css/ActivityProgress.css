@@ -1,0 +1,75 @@
+.activity-progress-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.activity-progress-head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activity-progress-head .dropdown button{
+    border-radius: 50px;
+    font-size: 10px;
+    background-image: linear-gradient(to right, #9DCEFF , #92A3FD);
+    border: none;
+}
+
+.activity-progress-head .dropdown button img {
+    margin-left: 5px;
+}
+
+
+.graph {
+    margin: 20px 0;
+    padding: 10px;
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px 0 #F3F3F3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.graph .bar-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.graph .bar-group p {
+    margin-bottom: 0;
+    font-size: 11px;
+}
+
+.graph .bar-group .bar-back {
+    width: 25px;
+    height: 75%;
+    background-color: #F7F8F8;
+    display: flex;
+    align-items: flex-end;
+    border-radius: 2em;
+    margin-bottom: 10px;
+}
+
+.graph .bar-group .bar-back .bar {
+    width: 100%;
+    height: 80%;
+    border-radius: 2em;
+}
+
+.blue {
+    background-image: linear-gradient(to right, #9DCEFF , #92A3FD);
+}
+
+.pink {
+    background-image: linear-gradient(to right, #EEA4CE , #C58BF2);
+}

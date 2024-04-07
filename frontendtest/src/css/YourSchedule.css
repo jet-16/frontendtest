@@ -1,0 +1,125 @@
+.your-schedule-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-days {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding-left: 20px;
+}
+
+.show-days::after {
+    content: "";
+}
+
+.show-days::before {
+    content: "";
+}
+
+.show-days::-webkit-scrollbar {
+    display: none;
+  }
+
+.show-days .date-container {
+    background-color: #F7F8F8;
+    color: #7B6F72;
+    font-size: 14px!important;
+    padding: 15px 20px;
+    width: max-content;
+    height: max-content;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.show-days .date-container h3 {
+    font-size: 18px;
+}
+
+.select-date-container  {
+    background-image: linear-gradient(to right, #9DCEFF , #92A3FD);
+    color: white!important;
+}
+
+.schedule-div {
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.bedtime-div {
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px 0 #F3F3F3;
+}
+
+.bedtime-div .info-div {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.bedtime-div .info-div p {
+    margin-bottom: 0;
+    color: #7B6F72;
+}
+
+.bedtime-div .button-div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.bedtime-div .button-div img {
+    height: 20px;;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #C58BF2;
+    /* background-image: linear-gradient(to right, #EEA4CE , #C58BF2)!important; */
+    border: none;
+} 
+
+.form-switch {
+    padding-left: 0!important;
+    margin-top: 20px;
+}
+
+.form-switch .form-check-input {
+    margin-left: 0!important;
+    width: 3em!important;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-check-input {
+    height: 1.5em!important;
+}
+
+.form-switch .form-check-input:focus
+{
+    outline: none;
+    box-shadow: none;
+}
