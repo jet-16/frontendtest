@@ -130,6 +130,7 @@ function App() {
           }
 
         sleepSchedules.push(data)
+        localStorage.setItem("sleepSchedules", JSON.stringify(sleepSchedules))
         setTime("11:59")
         setHours("0")
         setMinutes("0")

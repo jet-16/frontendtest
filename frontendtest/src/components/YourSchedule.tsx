@@ -10,43 +10,13 @@ interface Props {
     onSelectItem: (item: number) => void
 }
 
-export const sleepSchedules = [
-    {
-        date: "2024-04-04",
-        date_bedtime: "2024-04-04 21:00:00",
-        alert_on_bedtime: true,
-        date_wake: "2024-04-05 05:30:00",
-        alert_on_wake: true,
-    },
-    {
-        date: "2024-04-05",
-        date_bedtime: "2024-04-05 21:00:00",
-        alert_on_bedtime: true,
-        date_wake: "2024-04-06 05:30:00",
-        alert_on_wake: true,
-    },
-    {
-        date: "2024-04-08",
-        date_bedtime: "2024-04-08 22:00:00",
-        alert_on_bedtime: true,
-        date_wake: "2024-04-09 08:30:00",
-        alert_on_wake: true,
-    },
-    {
-        date: "2024-04-15",
-        date_bedtime: "2024-04-16 22:00:00",
-        alert_on_bedtime: true,
-        date_wake: "2024-04-16 06:30:00",
-        alert_on_wake: true,
-    },
-    {
-        date: "2024-04-23",
-        date_bedtime: "2024-04-23 23:00:00",
-        alert_on_bedtime: true,
-        date_wake: "2024-04-24 07:30:00",
-        alert_on_wake: true,
-    },
-];
+export let sleepSchedules: {
+    date: string, 
+    date_bedtime: string, 
+    alert_on_bedtime: boolean, 
+    date_wake: string, 
+    alert_on_wake: boolean
+}[] = JSON.parse(localStorage.getItem('sleepSchedules') || '[]');
 
 let checkSchedule = -1
 
